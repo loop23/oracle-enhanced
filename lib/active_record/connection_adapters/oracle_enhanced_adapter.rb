@@ -1,3 +1,4 @@
+# coding: utf-8
 # oracle_enhanced_adapter.rb -- ActiveRecord adapter for Oracle 8i, 9i, 10g, 11g
 #
 # Authors or original oracle_adapter: Graham Jenkins, Michael Schoen
@@ -713,7 +714,7 @@ module ActiveRecord
         columns.each do |col|
           value = attributes[col.name]
           # changed sequence of next two lines - should check if value is nil before converting to yaml
-          next if value.blank?
+          next if value.empty?
           if klass.attribute_types[col.name].is_a? ActiveRecord::Type::Serialized
             value = klass.attribute_types[col.name].serialize(value)
           end
